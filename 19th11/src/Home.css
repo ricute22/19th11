@@ -1,0 +1,109 @@
+/* General Home Styles */
+.home-container {
+  font-family: Arial, sans-serif;
+  color: #333;
+  padding: 20px;
+  background-color: #f8f8f8; /* Nền nhẹ nhàng */
+}
+
+/* Hero Section */
+.hero-section {
+  background-color: #e0f2f7; /* Blue pastel */
+  padding: 80px 40px;
+  text-align: center;
+  border-radius: 10px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hero-section h1 {
+  font-size: 3em;
+  color: #4a6c6f; /* Darker tone for contrast */
+  margin-bottom: 20px;
+}
+
+.hero-section p {
+  font-size: 1.2em;
+  color: #6a8c8f;
+  margin-bottom: 30px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-button {
+  background-color: #ffccbc; /* Orange pastel */
+  color: #fff;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #ffab91; /* Darker orange pastel on hover */
+}
+
+/* Features Section */
+.features-section {
+  padding: 40px 20px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.features-section h2 {
+  font-size: 2.5em;
+  color: #4a6c6f;
+  margin-bottom: 40px;
+}
+
+.feature-cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap; /* Cho phép các thẻ xuống dòng trên màn hình nhỏ */
+}
+
+.feature-cards .card {
+  background-color: #f7e1e8; /* Pink pastel */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  width: 300px;
+  text-align: left;
+}
+
+.feature-cards .card h3 {
+  color: #7b4e6d; /* Darker tone for contrast */
+  margin-bottom: 15px;
+  font-size: 1.5em;
+}
+
+.feature-cards .card p {
+  color: #8b6e7f;
+}
+
+/* About Section */
+.about-section {
+  background-color: #e6e6fa; /* Lavender pastel */
+  padding: 60px 40px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.about-section h2 {
+  font-size: 2.5em;
+  color: #5d4a7b;
+  margin-bottom: 20px;
+}
+
+.about-section p {
+  font-size: 1.1em;
+  color: #7d6b9a;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
