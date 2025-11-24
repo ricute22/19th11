@@ -43,13 +43,13 @@ const ListProducts_SP_Admin = () => {
         <div>
           <h2>Quản lý sản phẩm (Admin)</h2>
 
-          {/* Nút thêm mới trên đầu bảng */}
-
           <table className="product-table">
             <thead>
               <tr>
                 <th>Hình ảnh</th>
                 <th>Tên</th>
+                {/* ✅ THÊM CỘT DANH MỤC VÀO HEADER */}
+                <th>Danh mục</th>
                 <th>Giá</th>
                 <th>Đánh giá</th>
                 <th>Thao tác</th>
@@ -59,9 +59,15 @@ const ListProducts_SP_Admin = () => {
               {products.map((p) => (
                 <tr key={p.id}>
                   <td style={{ width: "100px" }}>
-                    <img src={p.image} alt={p.title} className="thumb" />
+                    {/* Giả định cột ảnh là 'image' */}
+                    <img src={p.image} alt={p.title} className="thumb" /> 
                   </td>
                   <td style={{ width: "500px" }}>{p.title}</td>
+                  
+                  {/* ✅ HIỂN THỊ DỮ LIỆU DANH MỤC */}
+                  {/* Cột 'category' đã được thêm vào database ở bước trước */}
+                  <td>{p.category}</td> 
+                  
                   <td>{p.price}</td>
                   <td>
                     ⭐ {p.rating_rate} ({p.rating_count})

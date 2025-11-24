@@ -1,18 +1,21 @@
 import "./assets/css/main.css";
-import logoBC from "./assets/images/logo.png"; // THAY TÊN FILE LOGO TẠI ĐÂY
+import logoBC from "./assets/images/logo.png";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const Layout = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
-  const [searchTerm, setSearchTerm] = useState(""); // State để quản lý giá trị input tìm kiếm
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // 🛒 Số lượng sản phẩm trong giỏ
+  const [cartCount, setCartCount] = useState(
+    parseInt(localStorage.getItem("cartCount")) || 0
+  );
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
+    if (storedUser) setUser(JSON.parse(storedUser));
   }, []);
 
   const handleLogout = () => {
@@ -22,9 +25,7 @@ const Layout = () => {
   };
 
   const handleSearch = () => {
-    // Xử lý logic tìm kiếm tại đây, ví dụ: navigate(`/search?q=${searchTerm}`);
     console.log("Tìm kiếm với từ khóa:", searchTerm);
-    // Bạn có thể thêm navigate đến trang kết quả tìm kiếm ở đây
   };
 
   return (
@@ -32,21 +33,21 @@ const Layout = () => {
       <header>
         <div id="divheader" class="header1">
           <div id="banner" class="banner1">
-            {/* ĐÃ SỬA: THÊM paddingLeft ĐỂ LOGO CÁCH MÉP TRÁI */}
             <div
               id="topleft"
               style={{
                 display: "flex",
                 alignItems: "center",
-                paddingLeft: "20px", // THÊM KHOẢNG CÁCH RA 20PX
+                paddingLeft: "20px",
               }}
             >
-              {/* LOGO ĐÃ ĐƯỢC LÀM TO HƠN */}
               <img
                 src={logoBC}
                 alt="Logo BC"
-                style={{ height: "80px", marginRight: "20px" }} // Tăng chiều cao logo
+                style={{ height: "80px", marginRight: "20px" }}
               />
+
+              {/* MENU TRANG CHỦ + QUẢN TRỊ */}
               <ul
                 class="ul1"
                 style={{
@@ -56,11 +57,10 @@ const Layout = () => {
                   padding: 0,
                 }}
               >
-                {/* ĐÃ CẬP NHẬT MENU ĐIỀU HƯỚNG */}
                 <li>
                   <a href="/">TRANG CHỦ</a>
                 </li>
-                {/* HIỂN THỊ SẢN PHẨM CHỈ KHI ĐÃ ĐĂNG NHẬP */}
+
                 {user && (
                   <li>
                     <a href="/products">QUẢN TRỊ</a>
@@ -69,11 +69,7 @@ const Layout = () => {
               </ul>
             </div>
 
-            <div id="logo" class="logo1">
-              {/* Đã bỏ logo cũ */}
-            </div>
-
-            {/* PHẦN TÌM KIẾM ĐÃ ĐƯỢC THAY BẰNG THANH TÌM KIẾM CÓ ICON */}
+            {/* THANH TÌM KIẾM */}
             <div
               id="divtimkiem"
               style={{ display: "flex", alignItems: "center", width: "auto" }}
@@ -86,10 +82,10 @@ const Layout = () => {
                 style={{
                   padding: "8px 12px",
                   border: "1px solid #ccc",
-                  borderRadius: "20px", // Bo tròn góc
+                  borderRadius: "20px",
                   outline: "none",
                   fontSize: "16px",
-                  width: "250px", // Độ rộng của thanh tìm kiếm
+                  width: "250px",
                 }}
               />
               <button
@@ -98,30 +94,66 @@ const Layout = () => {
                   background: "none",
                   border: "none",
                   cursor: "pointer",
-                  marginLeft: "-35px", // Di chuyển icon vào trong input
+                  marginLeft: "-35px",
                   fontSize: "20px",
                   color: "#555",
                 }}
               >
-                &#x1F50D; {/* Icon kính lúp */}
+                &#x1F50D;
               </button>
             </div>
-            {/* KẾT THÚC PHẦN SỬA ĐỔI THANH TÌM KIẾM */}
           </div>
+
+          {/* ================================
+                MENU CHÍNH + SUBMENU SẢN PHẨM
+              ================================= */}
           <div id="menubar" className="menubar">
             <div className="menubar-left">
-              <a href="/menu1" className="menu-item">
-                Menu 1
-              </a>
-              <a href="/menu2" className="menu-item">
-                Menu 2
-              </a>
-              <a href="/menu3" className="menu-item">
-                Menu 3
+              {/* SẢN PHẨM + SUBMENU */}
+              <div className="menu-item dropdown">
+                <a className="menu-link">SẢN PHẨM ▼</a>
+
+                <div className="dropdown-content">
+                  <a href="/san-pham/quan">Quần</a>
+                  <a href="/san-pham/ao">Áo</a>
+                  <a href="/san-pham/giay">Giày</a>
+                </div>
+              </div>
+
+              <a href="/lien-he" className="menu-item">
+                LIÊN HỆ
               </a>
             </div>
 
             <div className="menubar-right">
+              {/* 🛒 ICON GIỎ HÀNG */}
+              <div
+                style={{
+                  marginRight: "20px",
+                  position: "relative",
+                  cursor: "pointer",
+                }}
+                onClick={() => navigate("/cart")}
+              >
+                <span style={{ fontSize: "28px" }}>🛒</span>
+
+                {/* Đếm số lượng */}
+                <span
+                  style={{
+                    position: "absolute",
+                    top: "-8px",
+                    right: "-8px",
+                    background: "red",
+                    color: "white",
+                    borderRadius: "50%",
+                    padding: "2px 7px",
+                    fontSize: "12px",
+                  }}
+                >
+                  {cartCount}
+                </span>
+              </div>
+
               {user ? (
                 <>
                   <span className="username">👤 {user.username}</span>
@@ -138,11 +170,13 @@ const Layout = () => {
           </div>
         </div>
       </header>
+
       <body>
         <div id="container" class="container">
           <Outlet />
         </div>
       </body>
+
       <footer></footer>
     </html>
   );

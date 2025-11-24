@@ -12,6 +12,8 @@ const EditProduct = () => {
     title: "",
     price: "",
     image: "",
+    // ✅ THÊM TRƯỜNG CATEGORY VÀO STATE
+    category: "",
     rating_rate: "",
     rating_count: "",
   });
@@ -35,10 +37,12 @@ const EditProduct = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (isNew) {
+      // Logic THÊM MỚI
       const { error } = await supabase.from("product1").insert([product]);
       if (error) return alert("Lỗi thêm: " + error.message);
       alert("✅ Đã thêm sản phẩm!");
     } else {
+      // Logic CẬP NHẬT
       const { error } = await supabase
         .from("product1")
         .update(product)
@@ -66,6 +70,19 @@ const EditProduct = () => {
                 value={product.title}
                 onChange={handleChange}
                 required
+              />
+            </label>
+
+            {/* ✅ TRƯỜNG NHẬP LIỆU CHO CATEGORY (DANH MỤC) */}
+            <label>
+              Danh mục:
+              <input
+                type="text"
+                name="category"
+                value={product.category}
+                onChange={handleChange}
+                placeholder="Ví dụ: Ao, Quan, Vay"
+                required // Yêu cầu nhập để đảm bảo phân loại
               />
             </label>
 
