@@ -1,14 +1,154 @@
-/* General Home Styles */
+/* ======================================= */
+/* 🏠 GENERAL HOME STYLES */
+/* ======================================= */
+
 .home-container {
-  font-family: Arial, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
-  padding: 20px;
-  background-color: #f8f8f8; /* Nền nhẹ nhàng */
+  padding: 20px 20px 0 20px; /* Bỏ padding dưới cùng để footer liền mạch */
+  background-color: #f8f8f8;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Hero Section */
+/* ======================================= */
+/* 🖼️ SLIDESHOW / BANNER SECTION */
+/* ======================================= */
+
+.slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 40px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slides img {
+  width: 100%;
+  flex-shrink: 0;
+  height: auto;
+  /* Chiều cao banner đã được tăng */
+  max-height: 550px;
+  object-fit: cover;
+}
+
+/* --- CSS CHO NÚT ĐIỀU HƯỚNG (NỀN MỜ) --- */
+
+.slide-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  /* Nền mờ */
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  border-radius: 50%;
+  line-height: 1;
+  outline: none;
+}
+
+.slide-btn:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.prev-btn {
+  left: 15px;
+}
+.next-btn {
+  right: 15px;
+}
+
+/* ======================================= */
+/* 👕 SẢN PHẨM NỔI BẬT (PRODUCTS SECTION) */
+/* ======================================= */
+
+.products-section {
+  padding: 40px 0;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.products-section h2 {
+  font-size: 2.5em;
+  color: #4a6c6f;
+  margin-bottom: 50px;
+  font-weight: 600;
+}
+
+.product-cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.product-cards .card {
+  background-color: #ffffff;
+  border: 1px solid #f7e1e8;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  width: 300px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.product-cards .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Định dạng Ảnh Sản Phẩm */
+.product-image-wrapper {
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  height: 300px;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-cards .card:hover .product-image {
+  transform: scale(1.05);
+}
+
+.product-cards .card h3 {
+  color: #7b4e6d;
+  margin-bottom: 10px;
+  font-size: 1.4em;
+  font-weight: 700;
+}
+
+.product-cards .card p {
+  color: #6d6d6d;
+  font-size: 0.95em;
+}
+
+/* ======================================= */
+/* 🌟 HERO SECTION (Giữ nguyên) */
+/* ======================================= */
+
 .hero-section {
-  background-color: #e0f2f7; /* Blue pastel */
+  background-color: #e0f2f7;
   padding: 80px 40px;
   text-align: center;
   border-radius: 10px;
@@ -17,93 +157,246 @@
 }
 
 .hero-section h1 {
-  font-size: 3em;
-  color: #4a6c6f; /* Darker tone for contrast */
+  font-size: 3.2em;
+  color: #4a6c6f;
   margin-bottom: 20px;
+  font-weight: 700;
 }
 
 .hero-section p {
-  font-size: 1.2em;
+  font-size: 1.1em;
   color: #6a8c8f;
   margin-bottom: 30px;
   max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 30px auto;
 }
 
 .cta-button {
-  background-color: #ffccbc; /* Orange pastel */
+  background-color: #ffccbc;
   color: #fff;
-  padding: 12px 25px;
+  padding: 14px 30px;
   border: none;
   border-radius: 30px;
   font-size: 1.1em;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 .cta-button:hover {
-  background-color: #ffab91; /* Darker orange pastel on hover */
+  background-color: #ffab91;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Features Section */
-.features-section {
-  padding: 40px 20px;
-  text-align: center;
-  margin-bottom: 40px;
+/* ======================================= */
+/* 🦶 FOOTER (ĐÃ CẬP NHẬT) */
+/* ======================================= */
+
+.main-footer {
+  background-color: #ffffff; /* Nền trắng như trong ảnh mẫu */
+  color: #333;
+  padding: 40px 20px 20px 20px;
+  border-top: 1px solid #eee;
+  font-size: 0.9em;
 }
 
-.features-section h2 {
-  font-size: 2.5em;
-  color: #4a6c6f;
-  margin-bottom: 40px;
-}
-
-.feature-cards {
+.footer-content {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   gap: 30px;
-  flex-wrap: wrap; /* Cho phép các thẻ xuống dòng trên màn hình nhỏ */
+  max-width: 1200px;
+  margin: 0 auto 30px auto;
+  flex-wrap: wrap;
 }
 
-.feature-cards .card {
-  background-color: #f7e1e8; /* Pink pastel */
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-  width: 300px;
-  text-align: left;
+.footer-col {
+  flex: 1;
+  min-width: 280px; /* Đảm bảo cột có đủ không gian */
 }
 
-.feature-cards .card h3 {
-  color: #7b4e6d; /* Darker tone for contrast */
-  margin-bottom: 15px;
-  font-size: 1.5em;
-}
-
-.feature-cards .card p {
-  color: #8b6e7f;
-}
-
-/* About Section */
-.about-section {
-  background-color: #e6e6fa; /* Lavender pastel */
-  padding: 60px 40px;
-  text-align: center;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.about-section h2 {
-  font-size: 2.5em;
-  color: #5d4a7b;
-  margin-bottom: 20px;
-}
-
-.about-section p {
+.footer-col h3 {
   font-size: 1.1em;
-  color: #7d6b9a;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #000;
+  text-transform: uppercase;
+  border-bottom: 1px solid #ccc; /* Đường kẻ phân chia tiêu đề */
+  padding-bottom: 10px;
+}
+
+/* Cột Thông tin liên hệ */
+.contact-info .store-name {
+  font-size: 1.5em;
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: #333;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.contact-item,
+.register-info {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.contact-item i {
+  margin-right: 10px;
+  font-size: 1em;
+  padding-top: 3px;
+  color: #666; /* Màu icon xám nhẹ */
+}
+
+/* Cột Dịch vụ và Chính sách */
+.policies ul {
+  list-style: none;
+  padding: 0;
+}
+
+.policies li {
+  margin-bottom: 8px;
+}
+
+.policies a {
+  color: #666;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.policies a:hover {
+  color: #000;
+  text-decoration: underline;
+}
+
+/* Cột Mạng xã hội & Newsletter */
+.social-links {
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+.social-links a {
+  font-size: 28px;
+  color: #444;
+  margin-right: 15px;
+  transition: color 0.2s;
+}
+
+.social-links a:hover {
+  color: #007bff; /* Ví dụ: Màu xanh nổi bật cho link */
+}
+
+.newsletter-form {
+  display: flex;
+  margin-top: 15px;
+  gap: 5px;
+}
+
+.newsletter-form input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex-grow: 1;
+  min-width: 100px;
+  font-size: 0.9em;
+}
+
+.newsletter-form .register-btn {
+  background-color: #000;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.newsletter-form .register-btn:hover {
+  background-color: #333;
+}
+
+.bct-badge {
+  margin-top: 30px;
+}
+
+.bct-badge img {
+  max-width: 150px;
+  height: auto;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+  margin-top: 20px;
+  color: #666;
+  font-size: 0.85em;
+}
+
+/* ======================================= */
+/* 📱 RESPONSIVE DESIGN */
+/* ======================================= */
+
+@media (max-width: 768px) {
+  .home-container {
+    padding: 10px;
+  }
+
+  /* Slider Responsive */
+  .slides img {
+    max-height: 300px;
+  }
+  .slide-btn {
+    padding: 8px 14px;
+    font-size: 20px;
+  }
+
+  /* Không có .hero-section trong phiên bản hiện tại, nhưng giữ để dự phòng */
+  .hero-section {
+    padding: 50px 20px;
+  }
+  .hero-section h1 {
+    font-size: 2.2em;
+  }
+
+  .products-section h2,
+  .footer-col h3 {
+    font-size: 1.8em;
+  }
+
+  /* Product Cards Responsive */
+  .product-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product-cards .card {
+    width: 100%;
+    max-width: 350px;
+    margin-bottom: 20px;
+  }
+
+  .product-image-wrapper {
+    height: 250px;
+  }
+
+  /* Footer Responsive */
+  .footer-content {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .footer-col {
+    min-width: 100%;
+    text-align: left;
+  }
+
+  /* Căn chỉnh lại tiêu đề footer trên mobile */
+  .footer-col h3 {
+    text-align: left;
+  }
 }

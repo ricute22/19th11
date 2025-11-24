@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "./supabaseClient";
 import { useNavigate } from "react-router-dom";
+// Nếu bạn có file CSS riêng, hãy đảm bảo nó được import:
+// import "./assets/css/quanlysp.css";
 
 const ListProducts_SP_Admin = () => {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
 
   const fetchProducts = async () => {
+    // Lấy tất cả dữ liệu, bao gồm cột 'category' mới
     const { data, error } = await supabase
       .from("product1")
       .select("*")
@@ -46,6 +49,8 @@ const ListProducts_SP_Admin = () => {
           <tr>
             <th>Hình ảnh</th>
             <th>Tên</th>
+            {/* ✅ THÊM CỘT DANH MỤC VÀO HEADER */}
+            <th>Danh mục</th>
             <th>Giá</th>
             <th>Đánh giá</th>
             <th>Thao tác</th>
@@ -58,6 +63,11 @@ const ListProducts_SP_Admin = () => {
                 <img src={p.image} alt={p.title} className="thumb" />
               </td>
               <td style={{ width: "500px" }}>{p.title}</td>
+
+              {/* ✅ HIỂN THỊ DỮ LIỆU DANH MỤC */}
+              {/* Giả định cột trong Supabase là 'category' */}
+              <td>{p.category}</td>
+
               <td>{p.price}</td>
               <td>
                 ⭐ {p.rating_rate} ({p.rating_count})
