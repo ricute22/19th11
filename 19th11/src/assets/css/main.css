@@ -2,25 +2,6 @@ body {
   margin: 0;
 }
 
-/* ----------- TOP-LEFT MENU ------------ */
-#topleft ul {
-  text-decoration: none;
-  list-style: none;
-  width: 350px;
-  padding-top: 20px;
-}
-
-#topleft ul li {
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-#topleft ul li a {
-  text-decoration: none;
-  font-family: "Times New Roman", Times, serif;
-  color: blueviolet;
-}
-
 /* ----------- HEADER + BANNER ------------ */
 .header1 {
   height: 160px;
@@ -31,29 +12,26 @@ body {
 .banner1 {
   height: 104px;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 0 25px;
 }
 
-.ul1 {
+/* MENU TOP LEFT */
+#topleft ul {
+  list-style: none;
+  padding-top: 20px;
+  margin: 0;
   display: flex;
-  flex-direction: row;
+  gap: 15px;
 }
 
-.container {
-  min-height: 500px;
-  width: 100%;
-  justify-content: center;
-  display: flex;
+#topleft ul li a {
+  text-decoration: none;
+  font-family: "Times New Roman";
+  color: blueviolet;
 }
 
-.logo1 {
-  width: 560px;
-}
-
-/**********************/
 /* ----------- MENU BAR ------------ */
 .menubar {
   background-color: #add8e6;
@@ -62,18 +40,16 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 0 30px;
-  box-sizing: border-box;
 }
 
-/* --- Menu bên trái --- */
+/* Menu trái */
 .menubar-left {
   display: flex;
   align-items: center;
   gap: 25px;
 }
 
-.menu-item,
-.menu-link {
+.menu-item {
   color: #003366;
   text-decoration: none;
   font-family: "Segoe UI", sans-serif;
@@ -81,59 +57,6 @@ body {
   font-weight: 600;
   cursor: pointer;
   transition: 0.2s;
-}
-
-/* ----------- DROPDOWN (SẢN PHẨM) ------------ */
-.dropdown {
-  position: relative;
-}
-
-/* --- Submenu FIX KHÔNG BIẾN MẤT KHI HOVER --- */
-.dropdown-content {
-  position: absolute;
-  top: 40px;
-  left: 0;
-  background: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  min-width: 160px;
-  padding: 8px 0;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
-
-  /* hiệu ứng mượt + KHÔNG tắt khi rê chuột */
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
-  transition: all 0.25s ease;
-  z-index: 999;
-}
-
-/* Mục submenu */
-.dropdown-content a {
-  display: block;
-  padding: 10px 12px;
-  color: #003366;
-  text-decoration: none;
-  font-size: 14px;
-  border-bottom: 1px solid #f1f1f1;
-  transition: 0.2s;
-}
-
-.dropdown-content a:last-child {
-  border-bottom: none;
-}
-
-.dropdown-content a:hover {
-  background: #eef7ff;
-  color: #001a33;
-}
-
-/* === FIX: Hover menu cha hoặc hover submenu đều mở === */
-.dropdown:hover .dropdown-content,
-.dropdown-content:hover {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
 }
 
 /* ----------- BÊN PHẢI: GIỎ HÀNG + USER ------------ */
@@ -146,8 +69,8 @@ body {
 /* GIỎ HÀNG */
 .cart-icon {
   position: relative;
-  cursor: pointer;
   font-size: 26px;
+  cursor: pointer;
 }
 
 .cart-count {
@@ -155,11 +78,10 @@ body {
   top: -6px;
   right: -10px;
   background: red;
-  color: #fff;
+  color: white;
   padding: 2px 6px;
   font-size: 12px;
   border-radius: 50%;
-  font-weight: bold;
 }
 
 /* USERNAME */
@@ -169,7 +91,7 @@ body {
   font-weight: 600;
 }
 
-/* BUTTON ĐĂNG XUẤT */
+/* ĐĂNG XUẤT */
 .logout-btn {
   background-color: #fff;
   color: #b22d30;
@@ -186,13 +108,27 @@ body {
   background-color: #f5f5f5;
 }
 
-/* LINK ĐĂNG NHẬP */
+/* ĐĂNG NHẬP — BỎ GẠCH CHÂN */
 .login-link {
   color: #003366;
-  text-decoration: none;
   font-weight: 600;
+  text-decoration: none !important; /* 🔥 Bỏ gạch chân */
 }
 
 .login-link:hover {
-  text-decoration: underline;
+  text-decoration: none; /* Không gạch chân luôn */
+}
+/* HIỆU ỨNG HOVER CHO MENU */
+.menu-item,
+#topleft ul li a,
+.login-link {
+  transition: all 0.25s ease;
+}
+
+.menu-item:hover,
+#topleft ul li a:hover,
+.login-link:hover {
+  color: #001a33;
+  transform: scale(1.05); /* Phóng to nhẹ */
+  opacity: 0.8; /* Làm sáng */
 }

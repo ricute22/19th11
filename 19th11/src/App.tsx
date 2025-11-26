@@ -1,72 +1,57 @@
 import "./styles.css";
+
 // @ts-ignore
 import Home from "./Home";
 // @ts-ignore
 import Layout from "./Layout";
 // @ts-ignore
-import Trang1 from "./Trang1";
-// @ts-ignore
 import Chitietsanpham from "./Chitietsanpham";
-
 // @ts-ignore
 import ProductDetail from "./ProductDetail";
-
 // @ts-ignore
 import ListProducts from "./ListProducts";
-
 // @ts-ignore
 import ListProducts_SP from "./ListProducts_SP";
-
 // @ts-ignore
-import Trang2 from "./Trang2";
+import SanPham from "./SanPham";
+// @ts-ignore
+import Cart from "./Cart"; // ← import giỏ hàng
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-//@ts-ignore
+// @ts-ignore
 import LoginPage from "./LoginPage";
-//@ts-ignore
+// @ts-ignore
 import LogoutPage from "./LogoutPage";
-//@ts-ignore
+// @ts-ignore
 import ProtectedRoute from "./ProtectedRoute";
-//@ts-ignore
+// @ts-ignore
 import ListProducts_SP_Admin from "./ListProducts_SP_Admin";
-//@ts-ignore
+// @ts-ignore
 import EditProduct from "./EditProduct";
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* ✅ Layout chung cho toàn bộ hệ thống */}
+        {/* Layout chung cho toàn bộ hệ thống */}
         <Route path="/" element={<Layout />}>
-          {/* ----------------------------------------------------------- */}
-          {/* 🌐 ROUTES CHO NGƯỜI DÙNG VÃNG LAI (PUBLIC ACCESS)             */}
-          {/* ----------------------------------------------------------- */}
-
-          {/* Trang chủ */}
+          {/* ------------------------ PUBLIC ROUTES ------------------------ */}
           <Route index element={<Home />} />
 
-          {/* Danh sách sản phẩm (ví dụ) */}
+          {/* Danh sách sản phẩm */}
           <Route path="products" element={<ListProducts_SP />} />
-
-          <Route path="trang1" element={<Trang1 />} />
-          <Route path="trang2" element={<Trang2 />} />
-
-          {/* 🎯 SỬA: Chi tiết sản phẩm (Dành cho Người dùng) */}
-          {/* Khi click vào sản phẩm sẽ link đến trang này */}
+          <Route path="sanpham" element={<SanPham />} />
           <Route path="sanpham/:id" element={<Chitietsanpham />} />
 
-          {/* <Route path="detail/:id" element={<ProductDetail />} /> */}
+          {/* Giỏ hàng */}
+          <Route path="cart" element={<Cart />} />
 
-          {/* Trang Đăng nhập/Đăng xuất */}
+          {/* Đăng nhập / Đăng xuất */}
           <Route path="login" element={<LoginPage />} />
           <Route path="logout" element={<LogoutPage />} />
 
-          {/* ----------------------------------------------------------- */}
-          {/* 🔒 ROUTES QUẢN TRỊ (CHỈ ADMIN ACCESS)                        */}
-          {/* ----------------------------------------------------------- */}
-
-          {/* Trang Danh sách sản phẩm Admin: /admin/products */}
+          {/* ------------------------ ADMIN ROUTES (CHỈ ADMIN ACCESS) ------------------------ */}
           <Route
             path="admin/products"
             element={
@@ -75,9 +60,6 @@ export default function App() {
               </ProtectedRoute>
             }
           />
-
-          {/* 🎯 SỬA: Chỉnh sửa sản phẩm (Dành cho Admin) */}
-          {/* Route này phải được bảo vệ và dùng cho chức năng chỉnh sửa */}
           <Route
             path="admin/edit/:id"
             element={

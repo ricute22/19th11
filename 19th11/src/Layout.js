@@ -1,6 +1,6 @@
 import "./assets/css/main.css";
 import logoBC from "./assets/images/logo.png";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const Layout = () => {
@@ -14,8 +14,18 @@ const Layout = () => {
   );
 
   useEffect(() => {
+    // Lấy thông tin user
     const storedUser = localStorage.getItem("user");
     if (storedUser) setUser(JSON.parse(storedUser));
+
+    // Lắng nghe event cập nhật giỏ hàng
+    const handleCartUpdate = () => {
+      setCartCount(parseInt(localStorage.getItem("cartCount")) || 0);
+    };
+
+    window.addEventListener("cartUpdated", handleCartUpdate);
+
+    return () => window.removeEventListener("cartUpdated", handleCartUpdate);
   }, []);
 
   const handleLogout = () => {
@@ -29,10 +39,10 @@ const Layout = () => {
   };
 
   return (
-    <html>
+    <div>
       <header>
-        <div id="divheader" class="header1">
-          <div id="banner" class="banner1">
+        <div id="divheader" className="header1">
+          <div id="banner" className="banner1">
             <div
               id="topleft"
               style={{
@@ -49,7 +59,7 @@ const Layout = () => {
 
               {/* MENU TRANG CHỦ + QUẢN TRỊ */}
               <ul
-                class="ul1"
+                className="ul1"
                 style={{
                   display: "flex",
                   alignItems: "center",
@@ -58,12 +68,11 @@ const Layout = () => {
                 }}
               >
                 <li>
-                  <a href="/">TRANG CHỦ</a>
+                  <Link to="/">TRANG CHỦ</Link>
                 </li>
-
                 {user && (
                   <li>
-                    <a href="/products">QUẢN TRỊ</a>
+                    <Link to="/products">QUẢN TRỊ</Link>
                   </li>
                 )}
               </ul>
@@ -104,25 +113,15 @@ const Layout = () => {
             </div>
           </div>
 
-          {/* ================================
-                MENU CHÍNH + SUBMENU SẢN PHẨM
-              ================================= */}
+          {/* MENU CHÍNH */}
           <div id="menubar" className="menubar">
             <div className="menubar-left">
-              {/* SẢN PHẨM + SUBMENU */}
-              <div className="menu-item dropdown">
-                <a className="menu-link">SẢN PHẨM ▼</a>
-
-                <div className="dropdown-content">
-                  <a href="/san-pham/quan">Quần</a>
-                  <a href="/san-pham/ao">Áo</a>
-                  <a href="/san-pham/giay">Giày</a>
-                </div>
-              </div>
-
-              <a href="/lien-he" className="menu-item">
+              <Link to="/sanpham" className="menu-item">
+                SẢN PHẨM
+              </Link>
+              <Link to="/lien-he" className="menu-item">
                 LIÊN HỆ
-              </a>
+              </Link>
             </div>
 
             <div className="menubar-right">
@@ -136,8 +135,6 @@ const Layout = () => {
                 onClick={() => navigate("/cart")}
               >
                 <span style={{ fontSize: "28px" }}>🛒</span>
-
-                {/* Đếm số lượng */}
                 <span
                   style={{
                     position: "absolute",
@@ -162,23 +159,23 @@ const Layout = () => {
                   </button>
                 </>
               ) : (
-                <a href="/login" className="login-link">
+                <Link to="/login" className="login-link">
                   Đăng nhập
-                </a>
+                </Link>
               )}
             </div>
           </div>
         </div>
       </header>
 
-      <body>
-        <div id="container" class="container">
+      <main>
+        <div id="container" className="container">
           <Outlet />
         </div>
-      </body>
+      </main>
 
       <footer></footer>
-    </html>
+    </div>
   );
 };
 

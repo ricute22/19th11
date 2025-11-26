@@ -19,8 +19,13 @@ const LoginPage = () => {
           "user",
           JSON.stringify({ username, role: "user" })
         );
+
         alert("✅ Đăng nhập thành công!");
+
         navigate("/");
+
+        // 🔄 Tự động load lại trang để layout cập nhật user
+        window.location.reload();
       } else {
         alert("❌ Vui lòng nhập đầy đủ thông tin!");
       }
