@@ -15,6 +15,12 @@ import ListProducts_SP from "./ListProducts_SP";
 // @ts-ignore
 import SanPham from "./SanPham";
 // @ts-ignore
+import Contact from "./Contact"; // ← Thêm import Contact
+
+// Trong <Routes> của Layout
+<Route path="lienhe" element={<Contact />} />; // ← Thêm route Liên Hệ
+
+// @ts-ignore
 import Cart from "./Cart"; // ← import giỏ hàng
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -43,7 +49,8 @@ export default function App() {
           <Route path="products" element={<ListProducts_SP />} />
           <Route path="sanpham" element={<SanPham />} />
           <Route path="sanpham/:id" element={<Chitietsanpham />} />
-
+          {/* TRANG LIÊN HỆ */}
+          <Route path="lienhe" element={<Contact />} />
           {/* Giỏ hàng */}
           <Route path="cart" element={<Cart />} />
 

@@ -119,7 +119,7 @@ const Layout = () => {
               <Link to="/sanpham" className="menu-item">
                 SẢN PHẨM
               </Link>
-              <Link to="/lien-he" className="menu-item">
+              <Link to="/lienhe" className="menu-item">
                 LIÊN HỆ
               </Link>
             </div>

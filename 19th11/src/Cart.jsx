@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const [cart, setCart] = useState([]);
+  const navigate = useNavigate();
 
   // Load giỏ hàng từ localStorage khi component mount
   useEffect(() => {
@@ -24,7 +26,7 @@ const Cart = () => {
   };
 
   const updateQuantity = (id, qty) => {
-    if (qty < 1) return; // tránh nhập số lượng < 1
+    if (qty < 1) return;
     const updatedCart = cart.map((item) =>
       item.id === id ? { ...item, soluong: qty } : item
     );
@@ -55,8 +57,29 @@ const Cart = () => {
     window.dispatchEvent(new Event("cartUpdated"));
   };
 
+  // ⭐ Khi giỏ hàng trống — hiện nút "Tiếp tục mua sắm"
   if (cart.length === 0) {
-    return <p style={{ padding: "20px" }}>Giỏ hàng của bạn đang trống.</p>;
+    return (
+      <div style={{ padding: "20px" }}>
+        <p>Giỏ hàng của bạn đang trống.</p>
+
+        <button
+          onClick={() => navigate("/sanpham")}
+          style={{
+            marginTop: "10px",
+            background: "#007bff",
+            color: "#fff",
+            border: "none",
+            padding: "10px 20px",
+            borderRadius: "8px",
+            cursor: "pointer",
+            fontSize: "16px",
+          }}
+        >
+          ← Tiếp tục mua sắm
+        </button>
+      </div>
+    );
   }
 
   return (
@@ -115,6 +138,7 @@ const Cart = () => {
         Tổng tiền: {totalPrice.toLocaleString()} VNĐ
       </h3>
 
+      {/* Nút thanh toán */}
       <button
         onClick={handleCheckout}
         style={{
@@ -126,11 +150,27 @@ const Cart = () => {
           borderRadius: "8px",
           cursor: "pointer",
           fontSize: "16px",
+          marginRight: "15px",
         }}
-        onMouseEnter={(e) => (e.target.style.background = "#218838")}
-        onMouseLeave={(e) => (e.target.style.background = "#28a745")}
       >
         Thanh toán
+      </button>
+
+      {/* ⭐ Nút tiếp tục mua sắm */}
+      <button
+        onClick={() => navigate("/sanpham")}
+        style={{
+          marginTop: "15px",
+          background: "#007bff",
+          color: "#fff",
+          border: "none",
+          padding: "10px 20px",
+          borderRadius: "8px",
+          cursor: "pointer",
+          fontSize: "16px",
+        }}
+      >
+        ← Tiếp tục mua sắm
       </button>
     </div>
   );
