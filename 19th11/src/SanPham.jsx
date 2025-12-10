@@ -66,7 +66,7 @@ const SanPham = () => {
           <div
             key={sp.id}
             style={{
-              border: "1px solid #ddd",
+              border: "1px solid #e0e0e0", // lighten border color
               borderRadius: "12px",
               padding: "15px",
               display: "flex",
@@ -74,11 +74,11 @@ const SanPham = () => {
               alignItems: "center",
               transition: "transform 0.3s, box-shadow 0.3s",
               height: "100%",
-              background: "#fff",
+              background: "#ffffff", // white background for the card
             }}
             className="sanpham-card"
           >
-            {/* 👉 THÊM LINK TẠI ĐÂY */}
+            {/* 👉 Thêm Link tại đây */}
             <Link
               to={`/sanpham/${sp.id}`}
               style={{
@@ -124,7 +124,7 @@ const SanPham = () => {
 
               <p
                 style={{
-                  color: "red",
+                  color: "#f28d6a", // pastel orange-red for price
                   fontWeight: "bold",
                   marginBottom: "10px",
                   textAlign: "center",
@@ -138,20 +138,21 @@ const SanPham = () => {
             <button
               onClick={() => addToCart(sp)}
               style={{
-                background: "#007bff",
+                background: "#81C784", // pastel green button
                 color: "#fff",
-                padding: "8px 14px",
+                padding: "10px 16px",
                 border: "none",
                 borderRadius: "8px",
                 cursor: "pointer",
                 transition: "all 0.3s",
+                fontWeight: "500",
               }}
               onMouseEnter={(e) => {
-                e.target.style.background = "#0056b3";
+                e.target.style.background = "#45a049"; // darker green on hover
                 e.target.style.transform = "scale(1.05)";
               }}
               onMouseLeave={(e) => {
-                e.target.style.background = "#007bff";
+                e.target.style.background = "#4CAF50";
                 e.target.style.transform = "scale(1)";
               }}
             >
@@ -164,7 +165,7 @@ const SanPham = () => {
       <style>{`
         .sanpham-card:hover {
           transform: translateY(-10px);
-          box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
         .sanpham-img:hover {
           transform: scale(1.05);

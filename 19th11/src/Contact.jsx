@@ -15,6 +15,13 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     alert("📩 Đã gửi thông tin liên hệ!");
+
+    // Reset form sau khi gửi
+    setForm({
+      name: "",
+      email: "",
+      message: "",
+    });
   };
 
   return (
