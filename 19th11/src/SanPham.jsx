@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "./supabaseClient";
+import { Link } from "react-router-dom";
 
 const SanPham = () => {
   const [products, setProducts] = useState([]);
@@ -17,6 +18,7 @@ const SanPham = () => {
     } else {
       setProducts(data);
     }
+
     setLoading(false);
   };
 
@@ -37,13 +39,10 @@ const SanPham = () => {
 
     localStorage.setItem("cart", JSON.stringify(cart));
 
-    // Cập nhật tổng số lượng sản phẩm trong icon giỏ hàng
     const total = cart.reduce((sum, item) => sum + item.soluong, 0);
     localStorage.setItem("cartCount", total);
 
-    // 🔔 Phát event để Layout lắng nghe
     window.dispatchEvent(new Event("cartUpdated"));
-
     alert("🛒 Đã thêm vào giỏ hàng!");
   };
 
@@ -79,48 +78,63 @@ const SanPham = () => {
             }}
             className="sanpham-card"
           >
-            <div
+            {/* 👉 THÊM LINK TẠI ĐÂY */}
+            <Link
+              to={`/sanpham/${sp.id}`}
               style={{
+                textDecoration: "none",
+                color: "inherit",
                 width: "100%",
-                height: "220px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                overflow: "hidden",
-                marginBottom: "10px",
               }}
             >
-              <img
-                src={sp.image}
-                alt={sp.title}
+              <div
                 style={{
-                  maxWidth: "100%",
-                  maxHeight: "100%",
-                  objectFit: "contain",
-                  borderRadius: "8px",
-                  transition: "transform 0.3s",
+                  width: "100%",
+                  height: "220px",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  overflow: "hidden",
+                  marginBottom: "10px",
                 }}
-                className="sanpham-img"
-              />
-            </div>
-            <h3
-              style={{
-                marginTop: "10px",
-                textAlign: "center",
-                minHeight: "50px",
-              }}
-            >
-              {sp.title}
-            </h3>
-            <p
-              style={{
-                color: "red",
-                fontWeight: "bold",
-                marginBottom: "10px",
-              }}
-            >
-              {Number(sp.price).toLocaleString()} VNĐ
-            </p>
+              >
+                <img
+                  src={sp.image}
+                  alt={sp.title}
+                  style={{
+                    maxWidth: "100%",
+                    maxHeight: "100%",
+                    objectFit: "contain",
+                    borderRadius: "8px",
+                    transition: "transform 0.3s",
+                  }}
+                  className="sanpham-img"
+                />
+              </div>
+
+              <h3
+                style={{
+                  marginTop: "10px",
+                  textAlign: "center",
+                  minHeight: "50px",
+                }}
+              >
+                {sp.title}
+              </h3>
+
+              <p
+                style={{
+                  color: "red",
+                  fontWeight: "bold",
+                  marginBottom: "10px",
+                  textAlign: "center",
+                }}
+              >
+                {Number(sp.price).toLocaleString()} VNĐ
+              </p>
+            </Link>
+
+            {/* Nút thêm giỏ hàng */}
             <button
               onClick={() => addToCart(sp)}
               style={{
