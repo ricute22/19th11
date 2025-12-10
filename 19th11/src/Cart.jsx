@@ -5,17 +5,20 @@ const Cart = () => {
   const [cart, setCart] = useState([]);
   const navigate = useNavigate();
 
+  // Load cart from localStorage
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
     setCart(storedCart);
   }, []);
 
+  // Function to update the total count in the cart
   const updateCartCount = (updatedCart) => {
     const total = updatedCart.reduce((sum, item) => sum + item.soluong, 0);
     localStorage.setItem("cartCount", total);
     window.dispatchEvent(new Event("cartUpdated"));
   };
 
+  // Remove item from cart
   const removeItem = (id) => {
     const updatedCart = cart.filter((item) => item.id !== id);
     setCart(updatedCart);
@@ -23,6 +26,7 @@ const Cart = () => {
     updateCartCount(updatedCart);
   };
 
+  // Update the quantity of an item
   const updateQuantity = (id, qty) => {
     if (qty < 1) return;
     const updatedCart = cart.map((item) =>
@@ -33,11 +37,13 @@ const Cart = () => {
     updateCartCount(updatedCart);
   };
 
+  // Calculate total price
   const totalPrice = cart.reduce(
     (sum, item) => sum + item.price * item.soluong,
     0
   );
 
+  // Handle checkout
   const handleCheckout = () => {
     if (cart.length === 0) {
       alert("Giỏ hàng đang trống!");
