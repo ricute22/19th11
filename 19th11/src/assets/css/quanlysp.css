@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background: #f2f4f7;
+  background: #f9f9fc; /* Sử dụng màu sáng và nhẹ cho nền */
   margin: 0;
   padding: 0;
 }
@@ -8,22 +8,25 @@ body {
 .container {
   max-width: 900px;
   margin: 40px auto;
-  background: white;
+  background: #ffffff;
   padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ nhẹ */
 }
 
 h2 {
   margin-top: 0;
   color: #333;
+  font-size: 1.8rem; /* Đổi kích thước font cho tiêu đề */
+  font-weight: 600;
+  text-align: center;
 }
 
 /* Nút nằm trên đầu bảng */
 .table-actions {
   display: flex;
-  justify-content: flex-start; /* căn trái */
-  margin-bottom: 10px; /* khoảng cách với bảng */
+  justify-content: flex-start;
+  margin-bottom: 15px;
 }
 
 .product-table {
@@ -34,77 +37,110 @@ h2 {
 .product-table th,
 .product-table td {
   border: 1px solid #ddd;
-  padding: 8px;
+  padding: 12px;
   text-align: left;
+  font-size: 14px;
 }
 
 .product-table th {
-  background: #f0f0f0;
+  background: #f2f5f8;
+  color: #555; /* Màu nhạt cho các tiêu đề bảng */
 }
 
 .product-table tr:hover {
-  background-color: #fafafa;
+  background-color: #f7faff; /* Màu hover nhẹ */
 }
 
 .thumb {
   width: 60px;
   height: 60px;
   object-fit: cover;
-  border-radius: 6px;
+  border-radius: 8px; /* Bo tròn hình ảnh đẹp mắt */
 }
 
 .btn {
   border: none;
-  padding: 6px 12px;
-  border-radius: 4px;
+  padding: 8px 16px;
+  border-radius: 8px;
   cursor: pointer;
   color: white;
-  margin-right: 4px;
+  margin-right: 8px;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.2s;
 }
 
 .btn.green {
-  background-color: #28a745;
+  background-color: #28a745; /* Xanh lá pastel */
 }
+
 .btn.red {
-  background-color: #dc3545;
+  background-color: #dc3545; /* Đỏ sáng */
 }
+
 .btn.yellow {
   background-color: #ffc107;
-  color: black;
+  color: black; /* Màu đen cho nút vàng để nổi bật */
 }
+
 .btn.blue {
-  background-color: #007bff;
+  background-color: #007bff; /* Màu xanh dương dễ nhìn */
 }
+
 .btn.gray {
-  background-color: #6c757d;
+  background-color: #6c757d; /* Màu xám thanh lịch */
 }
 
 .btn:hover {
-  opacity: 0.9;
+  opacity: 0.85; /* Giảm độ sáng khi hover */
+  transform: scale(1.05); /* Thêm hiệu ứng zoom nhẹ khi hover */
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 label {
-  display: flex;
-  flex-direction: column;
   font-weight: bold;
   color: #444;
+  font-size: 15px;
 }
 
 input {
-  padding: 8px;
+  padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #333;
+  background: #fafafa; /* Nền input sáng */
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #007bff; /* Màu border khi focus vào input */
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
 }
 
 .actions {
   display: flex;
   justify-content: flex-end;
-  gap: 8px;
-  margin-top: 10px;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+button {
+  padding: 12px 20px;
+  background-color: #28a745; /* Nút màu xanh lá */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+button:hover {
+  background-color: #218838; /* Xanh lá đậm khi hover */
+  transform: scale(1.05);
 }

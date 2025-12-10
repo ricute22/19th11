@@ -58,23 +58,29 @@ const Cart = () => {
     padding: "10px 20px",
     fontSize: "16px",
     cursor: "pointer",
-    transition: "0.3s"
+    transition: "0.3s",
   };
 
   if (cart.length === 0) {
     return (
       <div style={{ padding: "20px", textAlign: "center" }}>
-        <p style={{ fontSize: "18px", color: "#555" }}>Giỏ hàng của bạn đang trống.</p>
+        <p style={{ fontSize: "18px", color: "#555" }}>
+          Giỏ hàng của bạn đang trống.
+        </p>
         <button
           onClick={() => navigate("/sanpham")}
           style={{
             ...btnStyle,
             backgroundColor: "#ffd6e0",
             color: "#ff4d6d",
-            marginTop: "15px"
+            marginTop: "15px",
           }}
-          onMouseEnter={e => e.currentTarget.style.backgroundColor = "#ffb6c1"}
-          onMouseLeave={e => e.currentTarget.style.backgroundColor = "#ffd6e0"}
+          onMouseEnter={(e) =>
+            (e.currentTarget.style.backgroundColor = "#ffb6c1")
+          }
+          onMouseLeave={(e) =>
+            (e.currentTarget.style.backgroundColor = "#ffd6e0")
+          }
         >
           ← Tiếp tục mua sắm
         </button>
@@ -83,7 +89,14 @@ const Cart = () => {
   }
 
   return (
-    <div style={{ padding: "20px", maxWidth: "900px", margin: "0 auto", fontFamily: "Segoe UI, sans-serif" }}>
+    <div
+      style={{
+        padding: "20px",
+        maxWidth: "900px",
+        margin: "0 auto",
+        fontFamily: "Segoe UI, sans-serif",
+      }}
+    >
       <h2 style={{ marginBottom: "20px", color: "#333" }}>Giỏ hàng của bạn</h2>
       {cart.map((item) => (
         <div
@@ -95,17 +108,28 @@ const Cart = () => {
             padding: "12px",
             borderRadius: "12px",
             boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
-            marginBottom: "15px"
+            marginBottom: "15px",
           }}
         >
           <img
             src={item.image}
             alt={item.title}
-            style={{ width: "100px", height: "100px", objectFit: "cover", borderRadius: "8px" }}
+            style={{
+              width: "100px",
+              height: "100px",
+              objectFit: "cover",
+              borderRadius: "8px",
+            }}
           />
           <div style={{ marginLeft: "20px", flex: 1 }}>
             <h4 style={{ marginBottom: "8px", color: "#333" }}>{item.title}</h4>
-            <p style={{ color: "#e07b91", fontWeight: "bold", marginBottom: "8px" }}>
+            <p
+              style={{
+                color: "#e07b91",
+                fontWeight: "bold",
+                marginBottom: "8px",
+              }}
+            >
               {Number(item.price).toLocaleString()} VNĐ
             </p>
             <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
@@ -113,13 +137,15 @@ const Cart = () => {
                 type="number"
                 min="1"
                 value={item.soluong}
-                onChange={(e) => updateQuantity(item.id, Number(e.target.value))}
+                onChange={(e) =>
+                  updateQuantity(item.id, Number(e.target.value))
+                }
                 style={{
                   width: "60px",
                   padding: "6px",
                   borderRadius: "6px",
                   border: "1px solid #ccc",
-                  textAlign: "center"
+                  textAlign: "center",
                 }}
               />
               <button
@@ -127,10 +153,14 @@ const Cart = () => {
                 style={{
                   ...btnStyle,
                   backgroundColor: "#ffb6b9",
-                  color: "#fff"
+                  color: "#fff",
                 }}
-                onMouseEnter={e => e.currentTarget.style.backgroundColor = "#ff6b81"}
-                onMouseLeave={e => e.currentTarget.style.backgroundColor = "#ffb6b9"}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.backgroundColor = "#ff6b81")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.backgroundColor = "#ffb6b9")
+                }
               >
                 Xóa
               </button>
@@ -143,16 +173,27 @@ const Cart = () => {
         Tổng tiền: {totalPrice.toLocaleString()} VNĐ
       </h3>
 
-      <div style={{ marginTop: "20px", display: "flex", gap: "15px", flexWrap: "wrap" }}>
+      <div
+        style={{
+          marginTop: "20px",
+          display: "flex",
+          gap: "15px",
+          flexWrap: "wrap",
+        }}
+      >
         <button
           onClick={handleCheckout}
           style={{
             ...btnStyle,
             backgroundColor: "#a0e7e5",
-            color: "#056676"
+            color: "#056676",
           }}
-          onMouseEnter={e => e.currentTarget.style.backgroundColor = "#70d6d3"}
-          onMouseLeave={e => e.currentTarget.style.backgroundColor = "#a0e7e5"}
+          onMouseEnter={(e) =>
+            (e.currentTarget.style.backgroundColor = "#70d6d3")
+          }
+          onMouseLeave={(e) =>
+            (e.currentTarget.style.backgroundColor = "#a0e7e5")
+          }
         >
           Thanh toán
         </button>
@@ -162,10 +203,14 @@ const Cart = () => {
           style={{
             ...btnStyle,
             backgroundColor: "#ffd6e0",
-            color: "#ff4d6d"
+            color: "#ff4d6d",
           }}
-          onMouseEnter={e => e.currentTarget.style.backgroundColor = "#ffb6c1"}
-          onMouseLeave={e => e.currentTarget.style.backgroundColor = "#ffd6e0"}
+          onMouseEnter={(e) =>
+            (e.currentTarget.style.backgroundColor = "#ffb6c1")
+          }
+          onMouseLeave={(e) =>
+            (e.currentTarget.style.backgroundColor = "#ffd6e0")
+          }
         >
           ← Tiếp tục mua sắm
         </button>
